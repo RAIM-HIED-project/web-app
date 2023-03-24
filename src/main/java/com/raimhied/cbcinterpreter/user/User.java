@@ -1,16 +1,23 @@
 package com.raimhied.cbcinterpreter.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Entity
+@Table
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
 public class User {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+
     int age;
-    String sex;
+    char sex;
     String bloodGroup;
+    boolean smoker;
+    boolean coronavirus;
+    String examinationsNum;
+    String chronicDiseases;
 
     float RCC;
     float Hb;
@@ -26,6 +33,15 @@ public class User {
     float monocyte;
     float eosinophil;
     float basophil;
+
+
+    public User(int age, char sex) {
+        this.age = age;
+        this.sex = sex;
+    }
+
+
+
 
 
 }
