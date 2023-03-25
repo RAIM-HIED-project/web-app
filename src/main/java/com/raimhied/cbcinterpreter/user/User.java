@@ -9,10 +9,11 @@ import lombok.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    Long userId;
 
     int age;
-    char sex;
+    String sex;
     String bloodGroup;
     boolean smoker;
     boolean coronavirus;
@@ -34,8 +35,8 @@ public class User {
     float eosinophil;
     float basophil;
 
-
-    public User(int age, char sex) {
+    // This constructor added for testing (delete later)
+    public User(int age, String sex) {
         this.age = age;
         this.sex = sex;
     }
