@@ -55,7 +55,7 @@ public class PageController {
 
         System.out.println(this.user.toString());
 
-        // userService.saveUser(user);
+        userService.saveUser(user);
 
         return "page";
     }
