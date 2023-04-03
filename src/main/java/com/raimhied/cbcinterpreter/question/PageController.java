@@ -13,23 +13,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path="/page")
+@RequestMapping(path="/")
 public class PageController {
 
     @Autowired
     private UserService userService;
-    private User user = new User();
-
+    private User user;
 
     @GetMapping
+    public String welcome() {
+
+        return "welcome";
+    }
+
+    @PostMapping
+    public String startSurvey(@Validated User user, BindingResult bindingResult, Model model) {
+
+
+
+        return "page";
+    }
+
+    @GetMapping("page")
     public String showPage(Model model) {
+
+        this.user = new User();
 
         model.addAttribute("user", this.user);
 
         return "page";
     }
 
-    @PostMapping
+    @PostMapping("page")
     public String userSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
         this.user = user;
@@ -38,7 +53,7 @@ public class PageController {
         return "page_2";
     }
 
-    @GetMapping("/2")
+    @GetMapping("page/2")
     public String nextPage(Model model) {
 
         model.addAttribute("user", this.user);
@@ -46,7 +61,7 @@ public class PageController {
         return "page_2";
     }
 
-    @PostMapping("/2")
+    @PostMapping("page/2")
     public String nextUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
         this.user.setHb(user.getHb());
@@ -55,7 +70,7 @@ public class PageController {
 
         System.out.println(this.user.toString());
 
-        userService.saveUser(user);
+        userService.saveUser(this.user);
 
         return "page";
     }

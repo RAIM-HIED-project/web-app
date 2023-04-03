@@ -5,32 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ankieta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+    #pregnancy-question {
+        display: none;
+    }
+    </style>
 </head>
 <body>
-<div class="row col-5 mx-auto">
+<div class="row col-5 mx-auto p-5">
     <h4 class="fw-bold text-center mt-3"></h4>
     <form class="bg-white px-4" th:action="@{/page}" method="post" th:object="${user}">
-        <p class="fw-bold">Your gender</p>
+        <p class="fw-bold">Płeć</p>
         <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" id="flexRadioDefault1" value="male" th:field="*{sex}"/>
-            <label class="form-check-label" for="flexRadioDefault1"> Male </label>
+            <input class="form-check-input" type="radio" id="male-btn" value="male" th:field="*{sex}"/>
+            <label class="form-check-label" for="male-btn"> Męska </label>
         </div>
         <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" id="flexRadioDefault2" value="female" th:field="*{sex}"/>
-            <label class="form-check-label" for="flexRadioDefault2"> Female </label>
+            <input class="form-check-input" type="radio" id="female-btn" value="female" th:field="*{sex}"/>
+            <label class="form-check-label" for="female-btn"> Żeńska </label>
         </div>
 
-        <p class="fw-bold">Your age</p>
+        <div id="pregnancy-question" class="form-check mb-5">
+            <p class="fw-bold">Czy jest Pani w ciąży?</p>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
+                <label class="form-check-label" for="pregnancy-yes"> Tak </label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
+                <label class="form-check-label" for="pregnancy-no"> Nie </label>
+            </div>
+        </div>
+
+        <p class="fw-bold mt-5"> Wiek </p>
         <div class="form-outline mb-5">
-            <input th:field="*{age}" type="number" id="typeNumber" class="form-control" name="age" />
+            <input th:field="*{age}" type="number" id="age" class="form-control" name="age" />
         </div>
 
-        <div class="text-end mx-auto">
-            <button type="submit" class="btn btn-primary">Next</button>
+        <p class="fw-bold mt-5"> Waga </p>
+        <div class="form-outline mb-5">
+            <input th:field="*{weight}" type="number" id="weight" class="form-control" name="weight" />
+        </div>
+
+        <p class="fw-bold mt-5"> Wzrost </p>
+        <div class="form-outline mb-5">
+            <input th:field="*{height}" type="number" id="height" class="form-control" name="height" />
+        </div>
+
+        <p class="fw-bold">Grupa krwi</p>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="idk-btn" value="null" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="idk-btn"> Nie znam </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="a-plus-btn" value="A+" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="a-plus-btn"> A+ </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="a-minus-btn" value="A-" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="a-minus-btn"> A- </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="b-plus-btn" value="B+" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="b-plus-btn"> B+ </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="b-minus-btn" value="B-" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="b-minus-btn"> B- </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="ab-plus-btn" value="AB+" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="ab-plus-btn"> AB+ </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="ab-minus-btn" value="AB-" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="ab-minus-btn"> AB- </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="0-plus-btn" value="0+" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="0-plus-btn"> 0+ </label>
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="0-minus-btn" value="0-" th:field="*{bloodGroup}"/>
+            <label class="form-check-label" for="0-minus-btn"> 0- </label>
+        </div>
+
+        <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-outline-dark btn-lg">Wróć</button>
+            <button type="submit" class="btn btn-outline-dark btn-lg">Dalej</button>
         </div>
 
     </form>
 
 </div>
+
+<script>
+    const femaleRadioBtn = document.getElementById("female-btn");
+    const maleRadioBtn = document.getElementById("male-btn");
+    const additionalQuestionDiv = document.getElementById("pregnancy-question");
+
+    femaleRadioBtn.addEventListener("change", function() {
+        if (femaleRadioBtn.checked) {
+            additionalQuestionDiv.style.display = "block";
+        } else {
+            additionalQuestionDiv.style.display = "none";
+        }
+    });
+
+    maleRadioBtn.addEventListener("change", function() {
+        additionalQuestionDiv.style.display = "none";
+    });
+    </script>
 </body>
 </html>

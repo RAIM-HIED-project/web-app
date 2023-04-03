@@ -13,9 +13,11 @@ public class User {
     Long userId;
 
     int age;
-    float weight;
+    int weight;
     int height;
     String sex;
+
+    boolean pregnancy;
 
     String bloodGroup;
     boolean smoker;
