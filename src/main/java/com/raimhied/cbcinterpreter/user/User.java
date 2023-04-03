@@ -13,12 +13,16 @@ public class User {
     Long userId;
 
     int age;
+    float weight;
+    int height;
     String sex;
+
     String bloodGroup;
     boolean smoker;
-    boolean coronavirus;
+    String coronavirus;
     String examinationsNum;
     String chronicDiseases;
+    String pills;
 
     float RCC;
     float Hb;
@@ -35,7 +39,7 @@ public class User {
     float eosinophil;
     float basophil;
 
-    // This constructor added for testing (delete later)
+    // This constructor added for testing (maybe delete later)
     public User(int age, String sex) {
         this.age = age;
         this.sex = sex;
