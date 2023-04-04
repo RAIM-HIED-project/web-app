@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-<div class="row col-5 mx-auto p-5">
+<div class="container p-5">
     <h4 class="fw-bold text-center mt-3"></h4>
     <form class="bg-white px-4" th:action="@{/page}" method="post" th:object="${user}">
         <p class="fw-bold">Płeć</p>
@@ -37,19 +37,28 @@
             </div>
         </div>
 
-        <p class="fw-bold mt-5"> Wiek </p>
-        <div class="form-outline mb-5">
+        <div class="form-outline mb-5 mt-5 has-validation">
+            <label for="age" class="form-label fw-bold"> Wiek </label>
             <input th:field="*{age}" type="number" id="age" class="form-control" name="age" />
+            <div id="age-error" class="invalid-feedback">
+                Niepoprawna wartość
+            </div>
         </div>
 
-        <p class="fw-bold mt-5"> Waga </p>
-        <div class="form-outline mb-5">
+        <div class="form-outline mb-5 mt-5">
+            <label for="weight" class="form-label fw-bold">Waga (kg)</label>
             <input th:field="*{weight}" type="number" id="weight" class="form-control" name="weight" />
+            <div id="weight-error" class="invalid-feedback">
+                Niepoprawna wartość
+            </div>
         </div>
 
-        <p class="fw-bold mt-5"> Wzrost </p>
-        <div class="form-outline mb-5">
+        <div class="form-outline mb-5 mt-5">
+            <label for="height" class="form-label fw-bold">Wzrost (cm)</label>
             <input th:field="*{height}" type="number" id="height" class="form-control" name="height" />
+            <div id="height-error" class="invalid-feedback">
+                Niepoprawna wartość
+            </div>
         </div>
 
         <p class="fw-bold">Grupa krwi</p>
@@ -90,9 +99,9 @@
             <label class="form-check-label" for="0-minus-btn"> 0- </label>
         </div>
 
-        <div class="d-grid gap-3 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-outline-dark btn-lg">Wróć</button>
-            <button type="submit" class="btn btn-outline-dark btn-lg">Dalej</button>
+        <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
+            <button type="button" class="btn btn-outline-dark btn-lg" onclick="history.back()">Wróć</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg" id="submit">Dalej</button>
         </div>
 
     </form>
@@ -102,7 +111,20 @@
 <script>
     const femaleRadioBtn = document.getElementById("female-btn");
     const maleRadioBtn = document.getElementById("male-btn");
+    const nextBtn = document.getElementById("submit");
     const additionalQuestionDiv = document.getElementById("pregnancy-question");
+
+    let ageErr = false;
+    let weightErr = false;
+    let heightErr = false;
+
+    // get input elements
+    const ageInput = document.getElementById("age");
+    const ageError = document.getElementById("age-error");
+    const weightInput = document.getElementById("weight");
+    const weightError = document.getElementById("weight-error");
+    const heightInput = document.getElementById("height");
+    const heightError = document.getElementById("height-error");
 
     femaleRadioBtn.addEventListener("change", function() {
         if (femaleRadioBtn.checked) {
@@ -115,6 +137,58 @@
     maleRadioBtn.addEventListener("change", function() {
         additionalQuestionDiv.style.display = "none";
     });
+
+
+
+    function validateAge() {
+        const age = parseInt(ageInput.value);
+        if (isNaN(age) || age <= 0 || age > 150) {
+          ageInput.classList.add('is-invalid');
+          ageErr = true;
+          nextBtn.disabled = true;
+        } else {
+          ageInput.classList.remove('is-invalid');
+          ageErr = false;
+          if (!ageErr && !weightErr && !heightErr) {
+            nextBtn.disabled = false;
+          }
+        }
+    }
+
+    function validateHeight() {
+        const height = parseInt(heightInput.value);
+        if (isNaN(height) || height <= 20 || height > 250) {
+          heightInput.classList.add('is-invalid');
+          heightErr = true;
+          nextBtn.disabled = true;
+        } else {
+          heightInput.classList.remove('is-invalid');
+          heightErr = false;
+          if (!ageErr && !weightErr && !heightErr) {
+            nextBtn.disabled = false;
+          }
+        }
+    }
+
+    function validateWeight() {
+        const weight = parseInt(weightInput.value);
+        if (isNaN(weight) || weight <= 0 || weight > 500) {
+          weightInput.classList.add('is-invalid');
+          weightErr = true;
+          nextBtn.disabled = true;
+        } else {
+          weightInput.classList.remove('is-invalid');
+          weightErr = false;
+          if (!ageErr && !weightErr && !heightErr) {
+            nextBtn.disabled = false;
+          }
+        }
+    }
+
+     ageInput.addEventListener('input', validateAge);
+     heightInput.addEventListener('input', validateHeight);
+     weightInput.addEventListener('input', validateWeight);
+
     </script>
 </body>
 </html>
