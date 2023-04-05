@@ -3,6 +3,9 @@ package com.raimhied.cbcinterpreter.user;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.swing.*;
+import java.util.List;
+
 @Entity
 @Table
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
@@ -20,11 +23,26 @@ public class User {
     boolean pregnancy;
 
     String bloodGroup;
+
+    boolean isVegan;
     boolean smoker;
     String coronavirus;
     String examinationsNum;
     String chronicDiseases;
     String pills;
+
+    enum Frequency {
+        MORE_THAN_ONCE_A_YEAR,
+        ONCE_A_YEAR,
+        LESS_THAN_ONCE_A_YEAR,
+        HARD_TO_SAY
+    }
+
+    Frequency frequency;
+
+    boolean chronic_illness;
+
+    List<String> illnesses;
 
     float RCC;
     float Hb;

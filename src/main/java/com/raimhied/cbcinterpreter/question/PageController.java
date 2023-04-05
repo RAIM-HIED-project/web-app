@@ -64,15 +64,13 @@ public class PageController {
     @PostMapping("page/2")
     public String nextUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
-        this.user.setHb(user.getHb());
-        this.user.setHct(user.getHct());
-        this.user.setMCV(user.getMCV());
+        this.user = user;
 
         System.out.println(this.user.toString());
 
-        userService.saveUser(this.user);
+        // userService.saveUser(this.user);
 
-        return "page";
+        return "page_3";
     }
 
 }

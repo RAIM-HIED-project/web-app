@@ -12,29 +12,96 @@
       <h4 class="fw-bold text-center mt-3"></h4>
       <form class="bg-white px-4" th:action="@{/page/2}" method="post" th:object="${user}">
 
-        <p class="fw-bold">Hb</p>
-        <div class="form-outline mb-5">
-          <input th:field="*{Hb}" type="number" step="0.01" id="hb" class="form-control" />
+        <p class="fw-bold">Jak często zdarza Ci się badać krew?</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="freq-often" value="MORE_THAN_ONCE_A_YEAR" th:field="*{frequency}"/>
+          <label class="form-check-label" for="freq-often">Częściej niż raz na rok</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="freq-normal" value="ONCE_A_YEAR" th:field="*{frequency}"/>
+          <label class="form-check-label" for="freq-normal">Średnio raz na rok</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="freq-rare" value="LESS_THAN_ONCE_A_YEAR" th:field="*{frequency}"/>
+          <label class="form-check-label" for="freq-rare">Rzadziej niż raz na rok</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="freq-no" value="HARD_TO_SAY" th:field="*{frequency}"/>
+          <label class="form-check-label" for="freq-no">Ciężko powiedzieć</label>
         </div>
 
-        <p class="fw-bold">HCT</p>
-        <div class="form-outline mb-5">
-          <input th:field="*{Hct}" type="number" step="0.01" id="hct" class="form-control"/>
+
+
+        <p class="fw-bold">Czy chorujesz na choroby przewlekłe?</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="illness-false" value="false" th:field="*{chronic_illness}"/>
+          <label class="form-check-label" for="illness-false">Nie choruję</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="illness-true" value="true" th:field="*{chronic_illness}"/>
+          <label class="form-check-label" for="illness-true">Choruję</label>
+        </div>
+
+        <div id="illnesses" class="form-outline mb-2 mt-2">
+          <label for="illnesses" class="form-label fw-bold">Jakie?</label>
+          <input th:field="*{illnesses}" type="text" class="form-control" name="illnesses" />
         </div>
 
 
-        <p class="fw-bold">MCV</p>
-        <div class="form-outline mb-5">
-          <input th:field="*{MCV}" type="number" step="0.01" id="mcv" class="form-control" />
+
+        <p class="fw-bold">Czy jesteś osobą palącą?</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="smoker-yes" value="true" th:field="*{smoker}"/>
+          <label class="form-check-label" for="smoker-yes">Tak</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="smoker-no" value="false" th:field="*{smoker}"/>
+          <label class="form-check-label" for="smoker-no">Nie</label>
         </div>
 
-        <div class="text-end mx-auto">
-          <button type="submit" class="btn btn-primary">Submit</button>
+
+<!--        <p class="fw-bold">Czy spożywasz produkty odzwierzęce?</p>-->
+<!--        <div class="form-check mb-2">-->
+<!--          <input class="form-check-input" type="radio" id="vegan-no" value="false" th:field="*{isVegan}"/>-->
+<!--          <label class="form-check-label" for="vegan-no">Tak</label>-->
+<!--        </div>-->
+<!--        <div class="form-check mb-2">-->
+<!--          <input class="form-check-input" type="radio" id="vegan-yes" value="true" th:field="*{isVegan}"/>-->
+<!--          <label class="form-check-label" for="vegan-yes">Nie</label>-->
+<!--        </div>-->
+
+
+
+        <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
+          <button type="button" class="btn btn-outline-dark btn-lg" onclick="history.back()">Wróć</button>
+          <button type="submit" class="btn btn-outline-primary btn-lg" id="submit">Dalej</button>
         </div>
 
       </form>
 
     </div>
+
+
+    <script>
+    const no_illness = document.getElementById("illness-false");
+    const illness = document.getElementById("illness-true");
+    const nextBtn = document.getElementById("submit");
+    const additionalQuestionDiv = document.getElementById("illnesses");
+
+    illness.addEventListener("change", function() {
+        if (illness.checked) {
+            additionalQuestionDiv.style.display = "block";
+        } else {
+            additionalQuestionDiv.style.display = "none";
+        }
+    });
+
+    no_illness.addEventListener("change", function() {
+        additionalQuestionDiv.style.display = "none";
+    });
+
+    </script>
+
 
 
 
