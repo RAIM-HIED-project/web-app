@@ -87,7 +87,7 @@
     const illness = document.getElementById("illness-true");
     const nextBtn = document.getElementById("submit");
     const additionalQuestionDiv = document.getElementById("illnesses");
-
+    additionalQuestionDiv.style.display = "none";
     const illness_radioFalse = document.querySelector('#illness-false');
     const illness_radioTrue = document.querySelector('#illness-true');
     const smoker_radioFalse = document.querySelector('#smoker-yes');
@@ -100,17 +100,12 @@
     smoker_radioTrue.checked = false;
 
     illness.addEventListener("change", function() {
-        if (illness.checked) {
-            additionalQuestionDiv.style.display = "block";
-        } else {
-            additionalQuestionDiv.style.display = "none";
-        }
+      additionalQuestionDiv.style.display = (illness.checked) ? "block" : "none";
     });
 
     no_illness.addEventListener("change", function() {
-        additionalQuestionDiv.style.display = "none";
+      additionalQuestionDiv.style.display = "none";
     });
-
     </script>
 
 
