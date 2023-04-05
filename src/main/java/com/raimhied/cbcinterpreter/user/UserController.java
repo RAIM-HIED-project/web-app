@@ -19,11 +19,5 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(path="/all")
-    public List<User> getUsers() {
-        return userService.getUsers();
-    }
-
-
 
 }

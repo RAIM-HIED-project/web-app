@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ankieta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <style>
+    #pregnancy-question {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+<div class="container p-5">
+  <h4 class="fw-bold text-center mt-3 mb-5">Informacja o twoich wynikach badania krwi</h4>
+  <form class="bg-white px-4" th:action="@{/page/3}" method="post" th:object="${user}">
+
+    <div class="form-outline mb-5 mt-5">
+      <label for="date" class="form-label fw-bold">Wyniki z dnia:</label>
+      <input type="date" id="date" name="date" class="form-control"/>
+    </div>
+
+    <p class="fw-bold mt-5">Czy w twoim badaniu wszystkie parametry są w normie?</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="parameters-ok" value="true" th:field="*{smoker}"/>
+      <label class="form-check-label" for="parameters-ok">Tak</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="parameters-not-ok" value="false" th:field="*{smoker}"/>
+      <label class="form-check-label" for="parameters-not-ok">Nie</label>
+    </div>
+
+    <div class="form-outline mb-5 mt-5">
+      <label for="height" class="form-label fw-bold">Wzrost (cm)</label>
+      <input th:field="*{height}" type="number" id="height" class="form-control" name="height" />
+      <div id="height-error" class="invalid-feedback">
+        Niepoprawna wartość
+      </div>
+    </div>
+
+    <p class="fw-bold">Grupa krwi</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="idk-btn" value="null" th:field="*{bloodGroup}"/>
+      <label class="form-check-label" for="idk-btn"> Nie znam </label>
+    </div>
+
+
+    <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
+      <button type="button" class="btn btn-outline-dark btn-lg" onclick="history.back()">Wróć</button>
+      <button type="submit" class="btn btn-outline-primary btn-lg" id="submit">Koniec</button>
+    </div>
+
+  </form>
+
+</div>
+
+</body>
+</html>

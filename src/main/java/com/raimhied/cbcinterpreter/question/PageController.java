@@ -64,13 +64,31 @@ public class PageController {
     @PostMapping("page/2")
     public String nextUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
-        this.user = user;
+        this.user = user; // TO CHANGE
+
+        System.out.println(this.user.toString());
+
+        return "page_3";
+    }
+
+    @GetMapping("page/3")
+    public String cbcPage(Model model) {
+
+        model.addAttribute("user", this.user);
+
+        return "page_3";
+    }
+
+    @PostMapping("page/3")
+    public String lastUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
+
+        this.user = user; // TO CHANGE
 
         System.out.println(this.user.toString());
 
         // userService.saveUser(this.user);
 
-        return "page_3";
+        return "end_page";
     }
 
 }

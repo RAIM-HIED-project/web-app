@@ -27,8 +27,6 @@ public class User {
     boolean isVegan;
     boolean smoker;
     String coronavirus;
-    String examinationsNum;
-    String chronicDiseases;
     String pills;
 
     enum Frequency {
@@ -58,15 +56,6 @@ public class User {
     float monocyte;
     float eosinophil;
     float basophil;
-
-    // This constructor added for testing (maybe delete later)
-    public User(int age, String sex) {
-        this.age = age;
-        this.sex = sex;
-    }
-
-
-
 
 
 }
