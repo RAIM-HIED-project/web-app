@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="row col-5 mx-auto">
+    <div class="container p-5">
       <h4 class="fw-bold text-center mt-3"></h4>
       <form class="bg-white px-4" th:action="@{/page/2}" method="post" th:object="${user}">
 
@@ -51,11 +51,11 @@
 
         <p class="fw-bold">Czy jesteś osobą palącą?</p>
         <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" id="smoker-yes" value="true" th:field="*{smoker}"/>
+          <input class="form-check-input" type="radio" id="smoker-yes" value="true" th:field="*{smoker}" name="smoker"/>
           <label class="form-check-label" for="smoker-yes">Tak</label>
         </div>
         <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" id="smoker-no" value="false" th:field="*{smoker}"/>
+          <input class="form-check-input" type="radio" id="smoker-no" value="false" th:field="*{smoker}" cname="smoker"/>
           <label class="form-check-label" for="smoker-no">Nie</label>
         </div>
 
@@ -87,6 +87,17 @@
     const illness = document.getElementById("illness-true");
     const nextBtn = document.getElementById("submit");
     const additionalQuestionDiv = document.getElementById("illnesses");
+
+    const illness_radioFalse = document.querySelector('#illness-false');
+    const illness_radioTrue = document.querySelector('#illness-true');
+    const smoker_radioFalse = document.querySelector('#smoker-yes');
+    const smoker_radioTrue = document.querySelector('#smoker-no');
+
+
+    illness_radioFalse.checked = false;
+    illness_radioTrue.checked = false;
+    smoker_radioFalse.checked = false;
+    smoker_radioTrue.checked = false;
 
     illness.addEventListener("change", function() {
         if (illness.checked) {
