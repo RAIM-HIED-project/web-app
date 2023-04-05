@@ -15,10 +15,4 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<User> getUsers() {
-        return List.of(
-                new User(20, "Male")
-        );
-    }
-
 }
