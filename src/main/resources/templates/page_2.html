@@ -66,15 +66,15 @@
         </div>
 
 
-<!--        <p class="fw-bold">Czy spożywasz produkty odzwierzęce?</p>-->
-<!--        <div class="form-check mb-2">-->
-<!--          <input class="form-check-input" type="radio" id="vegan-no" value="false" th:field="*{isVegan}"/>-->
-<!--          <label class="form-check-label" for="vegan-no">Tak</label>-->
-<!--        </div>-->
-<!--        <div class="form-check mb-2">-->
-<!--          <input class="form-check-input" type="radio" id="vegan-yes" value="true" th:field="*{isVegan}"/>-->
-<!--          <label class="form-check-label" for="vegan-yes">Nie</label>-->
-<!--        </div>-->
+        <p class="fw-bold mt-5">Czy spożywasz produkty odzwierzęce?</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="vegan-no" value="false" th:field="*{vegan}"/>
+          <label class="form-check-label" for="vegan-no">Tak</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="vegan-yes" value="true" th:field="*{vegan}"/>
+          <label class="form-check-label" for="vegan-yes">Nie</label>
+        </div>
 
 
 
@@ -92,10 +92,12 @@
     const no_illness = document.getElementById("illness-false");
     const no_smoker = document.getElementById("smoker-no");
     const illness = document.getElementById("illness-true");
+    const no_vegan = document.getElementById("vegan-no");
     const additionalQuestionDiv = document.getElementById("which-illnesses-question");
 
     no_illness.checked = false;
     no_smoker.checked = false;
+    no_vegan.checked = false;
 
     illness.addEventListener("change", function() {
         if (illness.checked) {

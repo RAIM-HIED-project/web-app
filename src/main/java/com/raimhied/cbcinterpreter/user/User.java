@@ -24,8 +24,8 @@ public class User {
 
     String bloodGroup;
 
-    boolean isVegan;
     boolean smoker;
+    boolean vegan;
     String coronavirus;
     String pills;
 
