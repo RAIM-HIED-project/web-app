@@ -19,7 +19,6 @@ public class User {
     int weight;
     int height;
     String sex;
-
     boolean pregnancy;
 
     String bloodGroup;
@@ -42,6 +41,8 @@ public class User {
 
     List<String> illnesses;
 
+    boolean allParametersOk;
+
     float RCC;
     float Hb;
     float Hct;
@@ -57,5 +58,11 @@ public class User {
     float eosinophil;
     float basophil;
 
+    public void setAllParametersOk(boolean AllParametersOk) {
+        allParametersOk = AllParametersOk;
+    }
 
+    public boolean isAllParametersOk() {
+        return allParametersOk;
+    }
 }
