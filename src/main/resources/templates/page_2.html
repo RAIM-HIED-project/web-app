@@ -35,7 +35,7 @@
           <label class="form-check-label" for="freq-no">Ciężko powiedzieć</label>
         </div>
 
-        <p class="fw-bold">Czy są to badania wykonywane regularnie?</p>
+        <p class="fw-bold mt-4">Czy są to badania wykonywane regularnie?</p>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" id="reg-true" value="true" th:field="*{regularity}"/>
           <label class="form-check-label" for="reg-true">Tak</label>
@@ -59,7 +59,7 @@
         <div id="which-illnesses-question" class="form-check mb-5">
           <div class="form-outline mb-2 mt-2">
             <label for="illnesses" class="form-label fw-bold">Jakie?</label>
-            <input th:field="*{illnesses}" type="text" class="form-control" id="illnesses"  name="illnesses" />
+            <input th:field="*{illnessesInput}" type="text" class="form-control" pattern="^[a-zA-Z]+(?:,\s*[a-zA-Z]+)*$" id="illnesses"  name="illnesses" />
           </div>
         </div>
 
@@ -115,10 +115,12 @@
     const illness = document.getElementById("illness-true");
     const vegan = document.getElementById("vegan-yes");
     const no_vegan = document.getElementById("vegan-no");
+    no_regular = document.getElementById("reg-false");
     const no_supplements = document.getElementById("supplements-no");
     const additionalQuestionDiv2 = document.getElementById("which-illnesses-question");
     const additionalQuestionDiv3 = document.getElementById("supplements-question");
 
+    no_regular.checked = false;
     no_illness.checked = false;
     no_smoker.checked = false;
     no_vegan.checked = false;

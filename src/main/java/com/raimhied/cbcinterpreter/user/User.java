@@ -3,6 +3,8 @@ package com.raimhied.cbcinterpreter.user;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -50,7 +52,9 @@ public class User {
 
     boolean chronic_illness;
 
-    List<String> illnesses;
+    String illnessesInput;
+
+    List<String> illnesses = (illnessesInput != null) ? Arrays.asList(illnessesInput.split(", ")) : new ArrayList<String>();
 
     boolean allParametersOk;
 
