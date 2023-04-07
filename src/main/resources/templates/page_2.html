@@ -76,6 +76,18 @@
           <label class="form-check-label" for="vegan-yes">Nie</label>
         </div>
 
+        <div id="supplements-question" class="form-check mb-5">
+          <p class="fw-bold mt-5">Czy przyjmujesz w związku z tym suplementy diety?</p>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="supplements-no" value="false" th:field="*{supplements}"/>
+            <label class="form-check-label" for="supplements-no">Nie</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="supplements-yes" value="true" th:field="*{supplements}"/>
+            <label class="form-check-label" for="supplements-yes">Tak</label>
+          </div>
+        </div>
+
 
 
         <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
@@ -92,12 +104,17 @@
     const no_illness = document.getElementById("illness-false");
     const no_smoker = document.getElementById("smoker-no");
     const illness = document.getElementById("illness-true");
+    const vegan = document.getElementById("vegan-yes");
     const no_vegan = document.getElementById("vegan-no");
+    const no_supplements = document.getElementById("supplements-no");
     const additionalQuestionDiv = document.getElementById("which-illnesses-question");
+    const additionalQuestionDiv2 = document.getElementById("supplements-question");
 
     no_illness.checked = false;
     no_smoker.checked = false;
     no_vegan.checked = false;
+    no_supplements.checked = false;
+    additionalQuestionDiv2.style.display = "none";
 
     illness.addEventListener("change", function() {
         if (illness.checked) {
@@ -109,6 +126,18 @@
 
     no_illness.addEventListener("change", function() {
         additionalQuestionDiv.style.display = "none";
+    });
+
+    vegan.addEventListener("change", function() {
+        if (vegan.checked) {
+            additionalQuestionDiv2.style.display = "block";
+        } else {
+            additionalQuestionDiv2.style.display = "none";
+        }
+    });
+
+    no_vegan.addEventListener("change", function() {
+        additionalQuestionDiv2.style.display = "none";
     });
 
     </script>

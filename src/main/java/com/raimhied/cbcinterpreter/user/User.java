@@ -3,7 +3,6 @@ package com.raimhied.cbcinterpreter.user;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.swing.*;
 import java.util.List;
 
 @Entity
@@ -25,8 +24,11 @@ public class User {
 
     boolean smoker;
     boolean vegan;
+    boolean supplements;
     String coronavirus;
     String pills;
+
+
 
     enum Frequency {
         MORE_THAN_ONCE_A_YEAR,
@@ -35,7 +37,26 @@ public class User {
         HARD_TO_SAY
     }
 
+    enum Reason {
+        GENERIC_DOCTOR_VISIT,
+        CHRONIC_ILLNESS_MONITORING,
+        WORK_RELATED,
+        OTHER,
+        DONT_REMEMBER
+    }
+
+    enum Covid {
+        NO_COVID,
+        TWO_WEEKS_FROM_COVID,
+        MORE_THAN_TWO_WEEKS,
+        DONT_KNOW
+    }
+
     Frequency frequency;
+
+    Reason reason;
+
+    Covid covid;
 
     boolean chronic_illness;
 

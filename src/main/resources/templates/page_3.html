@@ -21,6 +21,50 @@
       <input type="date" id="date" name="date" class="form-control"/>
     </div>
 
+    <p class="fw-bold mt-5">Jaki był powód badania?</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="reason-POZ" value="GENERIC_DOCTOR_VISIT" th:field="*{reason}"/>
+      <label class="form-check-label" for="reason-POZ">Zalecenie lekarza POZ</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="reason-chronic" value="CHRONIC_ILLNESS_MONITORING" th:field="*{reason}"/>
+      <label class="form-check-label" for="reason-chronic">Monitorowanie choroby przewlekłej
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="reason-work" value="WORK_RELATED" th:field="*{reason}"/>
+      <label class="form-check-label" for="reason-work">Medycyna pracy</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="reason-other" value="OTHER" th:field="*{reason}"/>
+      <label class="form-check-label" for="reason-other">Inny</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="reason-no" value="DONT_REMEMBER" th:field="*{reason}"/>
+      <label class="form-check-label" for="reason-no">Nie pamiętam</label>
+    </div>
+
+
+    <p class="fw-bold mt-5">Czy badanie krwi zostało wykonane w okresie po zarażeniu wirusem SARS-CoV-2?</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-no" value="NO_COVID" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-no">Nie, nigdy nie byłem/am zarażony/a koronawirusem / Badanie zostało wykonane przed zarażeniem</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-yes" value="TWO_WEEKS_FROM_COVID" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-yes">Tak, badanie zostało wykonane w ciągu dwóch tygodni od infekcji.
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-no-2" value="MORE_THAN_TWO_WEEKS" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-no-2">Badanie zostało wykonane po infekcji, ale później niż dwa tygodnie.</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-notsure" value="DONT_KNOW" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-notsure">Nie jestem pewien/pewna.</label>
+    </div>
+
+
     <p class="fw-bold mt-5">Czy w twoim badaniu wszystkie parametry są w normie?</p>
     <div class="form-check mb-2">
       <input class="form-check-input" type="radio" id="parameters-ok" value="true" th:field="*{allParametersOk}"/>
