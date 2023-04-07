@@ -90,8 +90,21 @@
 
 
       <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="wbc" />
+        <label class="form-check-label" for="wbc"> Leukocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-wbc-input">
+        <input type="number" step="0.01" id="wbc-input" class="form-control" th:field="*{WBC}"/>
+        <div id="wbc-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="rcc" value="rcc"/>
-        <label class="form-check-label" for="rcc"> RCC </label>
+        <label class="form-check-label" for="rcc"> Erytrocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-rcc-input">
         <input type="number" step="0.01" id="rcc-input" class="form-control" th:field="*{RCC}"/>
@@ -104,7 +117,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="hb"/>
-        <label class="form-check-label" for="hb"> Hb </label>
+        <label class="form-check-label" for="hb"> Hemoglobina (Hb) </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-hb-input">
         <input type="number" step="0.01" id="hb-input" class="form-control" th:field="*{Hb}"/>
@@ -117,7 +130,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="hct"/>
-        <label class="form-check-label" for="hct"> Hct </label>
+        <label class="form-check-label" for="hct"> Hematokryt (Hct) </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-hct-input">
         <input type="number" step="0.01" id="hct-input" class="form-control" th:field="*{Hct}"/>
@@ -181,21 +194,8 @@
 
 
       <div class="form-check mb-3">
-        <input class="form-check-input" type="radio" id="wbc" />
-        <label class="form-check-label" for="wbc"> WBC </label>
-      </div>
-      <div class="form-outline mb-5 has-validation" id="div-wbc-input">
-        <input type="number" step="0.01" id="wbc-input" class="form-control" th:field="*{WBC}"/>
-        <div id="wbc-error" class="invalid-feedback">
-          Niepoprawna wartość
-        </div>
-      </div>
-
-
-
-      <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="platelets" />
-        <label class="form-check-label" for="mch"> Platelets </label>
+        <label class="form-check-label" for="mch"> Płytki krwi </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-platelets-input">
         <input type="number" step="0.01" id="platelets-input" class="form-control" th:field="*{platelets}"/>
@@ -208,7 +208,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="neutrophil" />
-        <label class="form-check-label" for="neutrophil"> Neutrophil </label>
+        <label class="form-check-label" for="neutrophil"> Neutrocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-neutrophil-input">
         <input type="number" step="0.01" id="neutrophil-input" class="form-control" th:field="*{neutrophil}"/>
@@ -222,7 +222,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="lymphocyte" />
-        <label class="form-check-label" for="lymphocyte"> Lymphocyte </label>
+        <label class="form-check-label" for="lymphocyte"> Limfocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-lymphocyte-input">
         <input type="number" step="0.01" id="lymphocyte-input" class="form-control" th:field="*{lymphocyte}"/>
@@ -235,7 +235,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="monocyte" />
-        <label class="form-check-label" for="monocyte"> Monocyte </label>
+        <label class="form-check-label" for="monocyte"> Monocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-monocyte-input">
         <input type="number" step="0.01" id="monocyte-input" class="form-control" th:field="*{monocyte}"/>
@@ -248,7 +248,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="eosinophil" />
-        <label class="form-check-label" for="eosinophil"> Eosinophil </label>
+        <label class="form-check-label" for="eosinophil"> Eozynocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-eosinophil-input">
         <input type="number" step="0.01" id="eosinophil-input" class="form-control" th:field="*{eosinophil}"/>
@@ -261,7 +261,7 @@
 
       <div class="form-check mb-3">
         <input class="form-check-input" type="radio" id="basophil" />
-        <label class="form-check-label" for="basophil"> Basophil </label>
+        <label class="form-check-label" for="basophil"> Bazocyty </label>
       </div>
       <div class="form-outline mb-5 has-validation" id="div-basophil-input">
         <input type="number" step="0.01" id="basophil-input" class="form-control" th:field="*{basophil}"/>
