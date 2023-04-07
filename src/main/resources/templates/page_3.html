@@ -13,36 +13,36 @@
 </head>
 <body>
 <div class="container p-5">
-  <h4 class="fw-bold text-center mt-3 mb-5">Informacja o twoich wynikach badania krwi</h4>
+  <h4 class="fw-bold text-center mt-3 mb-5">Strona trzecia: wyniki morfologii krwi</h4>
   <form class="bg-white px-4" th:action="@{/page/3}" method="post" th:object="${user}">
 
-    <div class="form-outline mb-5 mt-5">
-      <label for="date" class="form-label fw-bold">Wyniki z dnia:</label>
-      <input type="date" id="date" name="date" class="form-control"/>
-    </div>
+<!--    <div class="form-outline mb-5 mt-5">-->
+<!--      <label for="date" class="form-label fw-bold">Wyniki z dnia:</label>-->
+<!--      <input type="date" id="date" name="date" class="form-control"/>-->
+<!--    </div>-->
 
-    <p class="fw-bold mt-5">Jaki był powód badania?</p>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="reason-POZ" value="GENERIC_DOCTOR_VISIT" th:field="*{reason}"/>
-      <label class="form-check-label" for="reason-POZ">Zalecenie lekarza POZ</label>
-    </div>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="reason-chronic" value="CHRONIC_ILLNESS_MONITORING" th:field="*{reason}"/>
-      <label class="form-check-label" for="reason-chronic">Monitorowanie choroby przewlekłej
-      </label>
-    </div>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="reason-work" value="WORK_RELATED" th:field="*{reason}"/>
-      <label class="form-check-label" for="reason-work">Medycyna pracy</label>
-    </div>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="reason-other" value="OTHER" th:field="*{reason}"/>
-      <label class="form-check-label" for="reason-other">Inny</label>
-    </div>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="reason-no" value="DONT_REMEMBER" th:field="*{reason}"/>
-      <label class="form-check-label" for="reason-no">Nie pamiętam</label>
-    </div>
+<!--    <p class="fw-bold mt-5">Jaki był powód badania?</p>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-POZ" value="GENERIC_DOCTOR_VISIT" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-POZ">Zalecenie lekarza POZ</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-chronic" value="CHRONIC_ILLNESS_MONITORING" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-chronic">Monitorowanie choroby przewlekłej-->
+<!--      </label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-work" value="WORK_RELATED" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-work">Medycyna pracy</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-other" value="OTHER" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-other">Inny</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-no" value="DONT_REMEMBER" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-no">Nie pamiętam</label>-->
+<!--    </div>-->
 
 
     <p class="fw-bold mt-5">Czy badanie krwi zostało wykonane w okresie po zarażeniu wirusem SARS-CoV-2?</p>
@@ -64,18 +64,15 @@
       <label class="form-check-label" for="covid-notsure">Nie jestem pewien/pewna.</label>
     </div>
 
-    <div id="pregnancy-question" class="form-check mb-5">
-      <p class="fw-bold">Czy badanie krwi zostało wykonane w okresie ciąży? </p>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
-        <label class="form-check-label" for="pregnancy-yes"> Tak </label>
-      </div>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
-        <label class="form-check-label" for="pregnancy-no"> Nie </label>
-      </div>
+    <p class="fw-bold">Czy badanie krwi zostało wykonane w okresie ciąży? </p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
+      <label class="form-check-label" for="pregnancy-yes"> Tak </label>
     </div>
-
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
+      <label class="form-check-label" for="pregnancy-no"> Nie </label>
+    </div>
 
     <p class="fw-bold mt-5">Czy w twoim badaniu wszystkie parametry są w normie?</p>
     <div class="form-check mb-2">
@@ -288,15 +285,13 @@
 </div>
 
 <script>
-
-  const femaleRadioBtn = document.getElementById("female-btn");
-  const maleRadioBtn = document.getElementById("male-btn");
   const noChoiceBtn = document.getElementById("parameters-not-ok")
   const yesChoiceBtn = document.getElementById("parameters-ok")
   const parametersList = document.getElementById("parameters-list")
-  const additionalQuestionDiv = document.getElementById("pregnancy-question");
+  const pregnancyFalseBtn = document.getElementById("pregnancy-no")
 
   noChoiceBtn.checked = false;
+  pregnancyFalseBtn.checked = false;
 
   const inputs = [
     document.getElementById("rcc-input"),
@@ -349,19 +344,6 @@
     document.getElementById("basophil")
   ];
 
-
-  femaleRadioBtn.addEventListener("change", function() {
-        if (femaleRadioBtn.checked) {
-            additionalQuestionDiv.style.display = "block";
-        } else {
-            additionalQuestionDiv.style.display = "none";
-        }
-    });
-
-    maleRadioBtn.addEventListener("change", function() {
-        additionalQuestionDiv.style.display = "none";
-    });
-
   for (let i = 0; i < div_inputs.length; i++) {
     div_inputs[i].style.display = "none";
 
@@ -401,7 +383,6 @@
             parametersList.style.display = "block";
         }
     });
-
 </script>
 
 

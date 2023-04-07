@@ -25,8 +25,6 @@ public class User {
     boolean smoker;
     boolean vegan;
     boolean supplements;
-    String coronavirus;
-    String pills;
 
 
 
@@ -35,14 +33,6 @@ public class User {
         ONCE_A_YEAR,
         LESS_THAN_ONCE_A_YEAR,
         HARD_TO_SAY
-    }
-
-    enum Reason {
-        GENERIC_DOCTOR_VISIT,
-        CHRONIC_ILLNESS_MONITORING,
-        WORK_RELATED,
-        OTHER,
-        DONT_REMEMBER
     }
 
     enum Covid {
@@ -54,7 +44,7 @@ public class User {
 
     Frequency frequency;
 
-    Reason reason;
+    boolean regularity;
 
     Covid covid;
 

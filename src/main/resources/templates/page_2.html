@@ -14,10 +14,10 @@
 <body>
 
     <div class="container p-5">
-      <h4 class="fw-bold text-center mt-3 mb-5"></h4>
+      <h4 class="fw-bold text-center mt-3 mb-5">Strona druga: pytania o stan zdrowia i styl życia</h4>
       <form class="bg-white px-4" th:action="@{/page/2}" method="post" th:object="${user}">
 
-        <p class="fw-bold">Jak często zdarza Ci się badać krew?</p>
+        <p class="fw-bold">Jak często badasz krew?</p>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" id="freq-often" value="MORE_THAN_ONCE_A_YEAR" th:field="*{frequency}"/>
           <label class="form-check-label" for="freq-often">Częściej niż raz na rok</label>
@@ -35,6 +35,15 @@
           <label class="form-check-label" for="freq-no">Ciężko powiedzieć</label>
         </div>
 
+        <p class="fw-bold">Czy są to badania wykonywane regularnie?</p>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="reg-true" value="true" th:field="*{regularity}"/>
+          <label class="form-check-label" for="reg-true">Tak</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" id="reg-false" value="false" th:field="*{regularity}"/>
+          <label class="form-check-label" for="reg-false">Nie</label>
+        </div>
 
 
         <p class="fw-bold mt-5">Czy chorujesz na choroby przewlekłe?</p>
@@ -107,37 +116,37 @@
     const vegan = document.getElementById("vegan-yes");
     const no_vegan = document.getElementById("vegan-no");
     const no_supplements = document.getElementById("supplements-no");
-    const additionalQuestionDiv = document.getElementById("which-illnesses-question");
-    const additionalQuestionDiv2 = document.getElementById("supplements-question");
+    const additionalQuestionDiv2 = document.getElementById("which-illnesses-question");
+    const additionalQuestionDiv3 = document.getElementById("supplements-question");
 
     no_illness.checked = false;
     no_smoker.checked = false;
     no_vegan.checked = false;
     no_supplements.checked = false;
-    additionalQuestionDiv2.style.display = "none";
+    additionalQuestionDiv3.style.display = "none";
 
     illness.addEventListener("change", function() {
         if (illness.checked) {
-            additionalQuestionDiv.style.display = "block";
-        } else {
-            additionalQuestionDiv.style.display = "none";
-        }
-    });
-
-    no_illness.addEventListener("change", function() {
-        additionalQuestionDiv.style.display = "none";
-    });
-
-    vegan.addEventListener("change", function() {
-        if (vegan.checked) {
             additionalQuestionDiv2.style.display = "block";
         } else {
             additionalQuestionDiv2.style.display = "none";
         }
     });
 
-    no_vegan.addEventListener("change", function() {
+    no_illness.addEventListener("change", function() {
         additionalQuestionDiv2.style.display = "none";
+    });
+
+    vegan.addEventListener("change", function() {
+        if (vegan.checked) {
+            additionalQuestionDiv3.style.display = "block";
+        } else {
+            additionalQuestionDiv3.style.display = "none";
+        }
+    });
+
+    no_vegan.addEventListener("change", function() {
+        additionalQuestionDiv3.style.display = "none";
     });
 
     </script>
