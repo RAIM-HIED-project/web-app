@@ -13,28 +13,16 @@
 </head>
 <body>
 <div class="container p-5">
-    <h4 class="fw-bold text-center mt-3"></h4>
+    <h4 class="fw-bold text-center mt-3">Strona pierwsza: pytania ogólne</h4>
     <form class="bg-white px-4" th:action="@{/page}" method="post" th:object="${user}">
         <p class="fw-bold">Płeć</p>
         <div class="form-check mb-2">
             <input class="form-check-input" type="radio" id="male-btn" value="male" th:field="*{sex}"/>
-            <label class="form-check-label" for="male-btn"> Męska </label>
+            <label class="form-check-label" for="male-btn"> Mężczyzna </label>
         </div>
         <div class="form-check mb-2">
             <input class="form-check-input" type="radio" id="female-btn" value="female" th:field="*{sex}"/>
-            <label class="form-check-label" for="female-btn"> Żeńska </label>
-        </div>
-
-        <div id="pregnancy-question" class="form-check mb-5">
-            <p class="fw-bold">Czy jest Pani w ciąży?</p>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
-                <label class="form-check-label" for="pregnancy-yes"> Tak </label>
-            </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
-                <label class="form-check-label" for="pregnancy-no"> Nie </label>
-            </div>
+            <label class="form-check-label" for="female-btn"> Kobieta </label>
         </div>
 
         <div class="form-outline mb-5 mt-5 has-validation">
@@ -109,10 +97,7 @@
 </div>
 
 <script>
-    const femaleRadioBtn = document.getElementById("female-btn");
-    const maleRadioBtn = document.getElementById("male-btn");
     const nextBtn = document.getElementById("submit");
-    const additionalQuestionDiv = document.getElementById("pregnancy-question");
 
     let ageErr = false;
     let weightErr = false;
@@ -125,18 +110,6 @@
     const weightError = document.getElementById("weight-error");
     const heightInput = document.getElementById("height");
     const heightError = document.getElementById("height-error");
-
-    femaleRadioBtn.addEventListener("change", function() {
-        if (femaleRadioBtn.checked) {
-            additionalQuestionDiv.style.display = "block";
-        } else {
-            additionalQuestionDiv.style.display = "none";
-        }
-    });
-
-    maleRadioBtn.addEventListener("change", function() {
-        additionalQuestionDiv.style.display = "none";
-    });
 
 
 

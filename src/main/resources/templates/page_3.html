@@ -64,6 +64,18 @@
       <label class="form-check-label" for="covid-notsure">Nie jestem pewien/pewna.</label>
     </div>
 
+    <div id="pregnancy-question" class="form-check mb-5">
+      <p class="fw-bold">Czy badanie krwi zostało wykonane w okresie ciąży? </p>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
+        <label class="form-check-label" for="pregnancy-yes"> Tak </label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
+        <label class="form-check-label" for="pregnancy-no"> Nie </label>
+      </div>
+    </div>
+
 
     <p class="fw-bold mt-5">Czy w twoim badaniu wszystkie parametry są w normie?</p>
     <div class="form-check mb-2">
@@ -277,9 +289,12 @@
 
 <script>
 
+  const femaleRadioBtn = document.getElementById("female-btn");
+  const maleRadioBtn = document.getElementById("male-btn");
   const noChoiceBtn = document.getElementById("parameters-not-ok")
   const yesChoiceBtn = document.getElementById("parameters-ok")
   const parametersList = document.getElementById("parameters-list")
+  const additionalQuestionDiv = document.getElementById("pregnancy-question");
 
   noChoiceBtn.checked = false;
 
@@ -333,6 +348,19 @@
     document.getElementById("eosinophil"),
     document.getElementById("basophil")
   ];
+
+
+  femaleRadioBtn.addEventListener("change", function() {
+        if (femaleRadioBtn.checked) {
+            additionalQuestionDiv.style.display = "block";
+        } else {
+            additionalQuestionDiv.style.display = "none";
+        }
+    });
+
+    maleRadioBtn.addEventListener("change", function() {
+        additionalQuestionDiv.style.display = "none";
+    });
 
   for (let i = 0; i < div_inputs.length; i++) {
     div_inputs[i].style.display = "none";
