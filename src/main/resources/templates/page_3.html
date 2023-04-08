@@ -6,44 +6,273 @@
   <title>Ankieta</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <style>
-    #pregnancy-question {
+    #parameters-list {
         display: none;
     }
     </style>
 </head>
 <body>
 <div class="container p-5">
-  <h4 class="fw-bold text-center mt-3 mb-5">Informacja o twoich wynikach badania krwi</h4>
+  <h4 class="fw-bold text-center mt-3 mb-5">Strona trzecia: wyniki morfologii krwi</h4>
   <form class="bg-white px-4" th:action="@{/page/3}" method="post" th:object="${user}">
 
-    <div class="form-outline mb-5 mt-5">
-      <label for="date" class="form-label fw-bold">Wyniki z dnia:</label>
-      <input type="date" id="date" name="date" class="form-control"/>
+<!--    <div class="form-outline mb-5 mt-5">-->
+<!--      <label for="date" class="form-label fw-bold">Wyniki z dnia:</label>-->
+<!--      <input type="date" id="date" name="date" class="form-control"/>-->
+<!--    </div>-->
+
+<!--    <p class="fw-bold mt-5">Jaki był powód badania?</p>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-POZ" value="GENERIC_DOCTOR_VISIT" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-POZ">Zalecenie lekarza POZ</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-chronic" value="CHRONIC_ILLNESS_MONITORING" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-chronic">Monitorowanie choroby przewlekłej-->
+<!--      </label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-work" value="WORK_RELATED" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-work">Medycyna pracy</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-other" value="OTHER" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-other">Inny</label>-->
+<!--    </div>-->
+<!--    <div class="form-check mb-2">-->
+<!--      <input class="form-check-input" type="radio" id="reason-no" value="DONT_REMEMBER" th:field="*{reason}"/>-->
+<!--      <label class="form-check-label" for="reason-no">Nie pamiętam</label>-->
+<!--    </div>-->
+
+
+    <p class="fw-bold mt-5">Czy badanie krwi zostało wykonane w okresie po zarażeniu wirusem SARS-CoV-2?</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-no" value="NO_COVID" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-no">Nie, nigdy nie byłem/am zarażony/a koronawirusem / Badanie zostało wykonane przed zarażeniem</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-yes" value="TWO_WEEKS_FROM_COVID" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-yes">Tak, badanie zostało wykonane w ciągu dwóch tygodni od infekcji.
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-no-2" value="MORE_THAN_TWO_WEEKS" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-no-2">Badanie zostało wykonane po infekcji, ale później niż dwa tygodnie.</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="covid-notsure" value="DONT_KNOW" th:field="*{covid}"/>
+      <label class="form-check-label" for="covid-notsure">Nie jestem pewien/pewna.</label>
+    </div>
+
+    <p class="fw-bold">Czy badanie krwi zostało wykonane w okresie ciąży? </p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="pregnancy-yes" value="true" th:field="*{pregnancy}"/>
+      <label class="form-check-label" for="pregnancy-yes"> Tak </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" id="pregnancy-no" value="false" th:field="*{pregnancy}"/>
+      <label class="form-check-label" for="pregnancy-no"> Nie </label>
     </div>
 
     <p class="fw-bold mt-5">Czy w twoim badaniu wszystkie parametry są w normie?</p>
     <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="parameters-ok" value="true" th:field="*{smoker}"/>
+      <input class="form-check-input" type="radio" id="parameters-ok" value="true" th:field="*{allParametersOk}"/>
       <label class="form-check-label" for="parameters-ok">Tak</label>
     </div>
     <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="parameters-not-ok" value="false" th:field="*{smoker}"/>
+      <input class="form-check-input" type="radio" id="parameters-not-ok" value="false" th:field="*{allParametersOk}"/>
       <label class="form-check-label" for="parameters-not-ok">Nie</label>
     </div>
 
-    <div class="form-outline mb-5 mt-5">
-      <label for="height" class="form-label fw-bold">Wzrost (cm)</label>
-      <input th:field="*{height}" type="number" id="height" class="form-control" name="height" />
-      <div id="height-error" class="invalid-feedback">
-        Niepoprawna wartość
+
+    <div id="parameters-list" class="mb-5 mt-3">
+      <p class="fw-bold">Proszę wybrać parametr nie w normie oraz wpisać jego wartość</p>
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="wbc" />
+        <label class="form-check-label" for="wbc"> Leukocyty </label>
       </div>
+      <div class="form-outline mb-5 has-validation" id="div-wbc-input">
+        <input type="number" step="0.01" id="wbc-input" class="form-control" th:field="*{WBC}"/>
+        <div id="wbc-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="rcc" value="rcc"/>
+        <label class="form-check-label" for="rcc"> Erytrocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-rcc-input">
+        <input type="number" step="0.01" id="rcc-input" class="form-control" th:field="*{RCC}"/>
+        <div id="rcc-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="hb"/>
+        <label class="form-check-label" for="hb"> Hemoglobina (Hb) </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-hb-input">
+        <input type="number" step="0.01" id="hb-input" class="form-control" th:field="*{Hb}"/>
+        <div id="hb-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="hct"/>
+        <label class="form-check-label" for="hct"> Hematokryt (Hct) </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-hct-input">
+        <input type="number" step="0.01" id="hct-input" class="form-control" th:field="*{Hct}"/>
+        <div id="hct-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="mcv" />
+        <label class="form-check-label" for="mcv"> MCV </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-mcv-input">
+        <input type="number" step="0.01" id="mcv-input" class="form-control" th:field="*{MCV}"/>
+        <div id="mcv-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="mch" />
+        <label class="form-check-label" for="mch"> MCH </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-mch-input">
+        <input type="number" step="0.01" id="mch-input" class="form-control" th:field="*{MCH}"/>
+        <div id="mch-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="mchc" />
+        <label class="form-check-label" for="mchc"> MCHC </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-mchc-input">
+        <input type="number" step="0.01" id="mchc-input" class="form-control" th:field="*{MCHC}"/>
+        <div id="mchc-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="rdw"/>
+        <label class="form-check-label" for="rdw"> RDW </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-rdw-input">
+        <input type="number" step="0.01" id="rdw-input" class="form-control" th:field="*{RDW}"/>
+        <div id="rdw-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="platelets" />
+        <label class="form-check-label" for="mch"> Płytki krwi </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-platelets-input">
+        <input type="number" step="0.01" id="platelets-input" class="form-control" th:field="*{platelets}"/>
+        <div id="platelets-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="neutrophil" />
+        <label class="form-check-label" for="neutrophil"> Neutrocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-neutrophil-input">
+        <input type="number" step="0.01" id="neutrophil-input" class="form-control" th:field="*{neutrophil}"/>
+        <div id="neutrophil-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="lymphocyte" />
+        <label class="form-check-label" for="lymphocyte"> Limfocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-lymphocyte-input">
+        <input type="number" step="0.01" id="lymphocyte-input" class="form-control" th:field="*{lymphocyte}"/>
+        <div id="lymphocyte-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="monocyte" />
+        <label class="form-check-label" for="monocyte"> Monocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-monocyte-input">
+        <input type="number" step="0.01" id="monocyte-input" class="form-control" th:field="*{monocyte}"/>
+        <div id="monocyte-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="eosinophil" />
+        <label class="form-check-label" for="eosinophil"> Eozynocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-eosinophil-input">
+        <input type="number" step="0.01" id="eosinophil-input" class="form-control" th:field="*{eosinophil}"/>
+        <div id="eosinophil-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" id="basophil" />
+        <label class="form-check-label" for="basophil"> Bazocyty </label>
+      </div>
+      <div class="form-outline mb-5 has-validation" id="div-basophil-input">
+        <input type="number" step="0.01" id="basophil-input" class="form-control" th:field="*{basophil}"/>
+        <div id="basophil-error" class="invalid-feedback">
+          Niepoprawna wartość
+        </div>
+      </div>
+
+
     </div>
 
-    <p class="fw-bold">Grupa krwi</p>
-    <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" id="idk-btn" value="null" th:field="*{bloodGroup}"/>
-      <label class="form-check-label" for="idk-btn"> Nie znam </label>
-    </div>
 
 
     <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-5">
@@ -54,6 +283,108 @@
   </form>
 
 </div>
+
+<script>
+  const noChoiceBtn = document.getElementById("parameters-not-ok")
+  const yesChoiceBtn = document.getElementById("parameters-ok")
+  const parametersList = document.getElementById("parameters-list")
+  const pregnancyFalseBtn = document.getElementById("pregnancy-no")
+
+  noChoiceBtn.checked = false;
+  pregnancyFalseBtn.checked = false;
+
+  const inputs = [
+    document.getElementById("rcc-input"),
+    document.getElementById("hb-input"),
+    document.getElementById("hct-input"),
+    document.getElementById("mcv-input"),
+    document.getElementById("mch-input"),
+    document.getElementById("mchc-input"),
+    document.getElementById("rdw-input"),
+    document.getElementById("wbc-input"),
+    document.getElementById("platelets-input"),
+    document.getElementById("neutrophil-input"),
+    document.getElementById("lymphocyte-input"),
+    document.getElementById("monocyte-input"),
+    document.getElementById("eosinophil-input"),
+    document.getElementById("basophil-input")
+  ];
+
+  const div_inputs = [
+    document.getElementById("div-rcc-input"),
+    document.getElementById("div-hb-input"),
+    document.getElementById("div-hct-input"),
+    document.getElementById("div-mcv-input"),
+    document.getElementById("div-mch-input"),
+    document.getElementById("div-mchc-input"),
+    document.getElementById("div-rdw-input"),
+    document.getElementById("div-wbc-input"),
+    document.getElementById("div-platelets-input"),
+    document.getElementById("div-neutrophil-input"),
+    document.getElementById("div-lymphocyte-input"),
+    document.getElementById("div-monocyte-input"),
+    document.getElementById("div-eosinophil-input"),
+    document.getElementById("div-basophil-input")
+  ];
+
+  const radioBtns = [
+    document.getElementById("rcc"),
+    document.getElementById("hb"),
+    document.getElementById("hct"),
+    document.getElementById("mcv"),
+    document.getElementById("mch"),
+    document.getElementById("mchc"),
+    document.getElementById("rdw"),
+    document.getElementById("wbc"),
+    document.getElementById("platelets"),
+    document.getElementById("neutrophil"),
+    document.getElementById("lymphocyte"),
+    document.getElementById("monocyte"),
+    document.getElementById("eosinophil"),
+    document.getElementById("basophil")
+  ];
+
+  for (let i = 0; i < div_inputs.length; i++) {
+    div_inputs[i].style.display = "none";
+
+    radioBtns[i].addEventListener("change", function() {
+      if (radioBtns[i].checked) {
+          div_inputs[i].style.display = "block";
+      } else {
+          div_inputs[i].style.display = "none";
+      }
+
+    });
+  }
+
+  for (let i = 0; i < inputs.length; i++) {
+
+      inputs[i].addEventListener("input", function() {
+        if (inputs[i].value < 0) {
+          inputs[i].classList.add('is-invalid')
+        } else {
+          inputs[i].classList.remove('is-invalid');
+        }
+    });
+  }
+
+  noChoiceBtn.addEventListener("change", function() {
+        if (noChoiceBtn.checked) {
+            parametersList.style.display = "block";
+        } else {
+            parametersList.style.display = "none";
+        }
+    });
+
+    yesChoiceBtn.addEventListener("change", function() {
+        if (yesChoiceBtn.checked) {
+            parametersList.style.display = "none";
+        } else {
+            parametersList.style.display = "block";
+        }
+    });
+</script>
+
 
 </body>
 </html>

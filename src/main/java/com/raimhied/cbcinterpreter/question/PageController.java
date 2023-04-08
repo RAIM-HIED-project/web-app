@@ -64,7 +64,11 @@ public class PageController {
     @PostMapping("page/2")
     public String nextUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
-        this.user = user; // TO CHANGE
+        this.user.setFrequency(user.getFrequency());
+        this.user.setChronic_illness(user.isChronic_illness());
+        this.user.setSmoker(user.isSmoker());
+        this.user.setRegularity(user.isRegularity());
+        this.user.setVegan(user.isVegan());
 
         System.out.println(this.user.toString());
 
@@ -82,7 +86,24 @@ public class PageController {
     @PostMapping("page/3")
     public String lastUserSubmit(@Validated User user, BindingResult bindingResult, Model model) {
 
-        this.user = user; // TO CHANGE
+        this.user.setAllParametersOk(user.isAllParametersOk());
+        this.user.setRCC(user.getRCC());
+        this.user.setHb(user.getHb());
+        this.user.setHct(user.getHct());
+        this.user.setMCV(user.getMCV());
+        this.user.setMCH(user.getMCH());
+        this.user.setMCHC(user.getMCHC());
+        this.user.setRDW(user.getRDW());
+        this.user.setWBC(user.getWBC());
+        this.user.setPlatelets(user.getPlatelets());
+        this.user.setNeutrophil(user.getNeutrophil());
+        this.user.setLymphocyte(user.getLymphocyte());
+        this.user.setMonocyte(user.getMonocyte());
+        this.user.setEosinophil(user.getEosinophil());
+        this.user.setBasophil(user.getBasophil());
+        this.user.setCovid(user.getCovid());
+        this.user.setPregnancy(user.isPregnancy());
+
 
         System.out.println(this.user.toString());
 

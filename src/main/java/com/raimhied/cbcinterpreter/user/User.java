@@ -3,7 +3,8 @@ package com.raimhied.cbcinterpreter.user;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -19,15 +20,15 @@ public class User {
     int weight;
     int height;
     String sex;
-
     boolean pregnancy;
 
     String bloodGroup;
 
-    boolean isVegan;
     boolean smoker;
-    String coronavirus;
-    String pills;
+    boolean vegan;
+    boolean supplements;
+
+
 
     enum Frequency {
         MORE_THAN_ONCE_A_YEAR,
@@ -36,11 +37,26 @@ public class User {
         HARD_TO_SAY
     }
 
+    enum Covid {
+        NO_COVID,
+        TWO_WEEKS_FROM_COVID,
+        MORE_THAN_TWO_WEEKS,
+        DONT_KNOW
+    }
+
     Frequency frequency;
+
+    boolean regularity;
+
+    Covid covid;
 
     boolean chronic_illness;
 
-    List<String> illnesses;
+    String illnessesInput;
+
+    List<String> illnesses = (illnessesInput != null) ? Arrays.asList(illnessesInput.split(", ")) : new ArrayList<String>();
+
+    boolean allParametersOk;
 
     float RCC;
     float Hb;
@@ -57,5 +73,11 @@ public class User {
     float eosinophil;
     float basophil;
 
+    public void setAllParametersOk(boolean AllParametersOk) {
+        allParametersOk = AllParametersOk;
+    }
 
+    public boolean isAllParametersOk() {
+        return allParametersOk;
+    }
 }
