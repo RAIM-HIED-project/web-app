@@ -69,6 +69,7 @@ public class PageController {
         this.user.setSmoker(user.isSmoker());
         this.user.setRegularity(user.isRegularity());
         this.user.setVegan(user.isVegan());
+        this.user.setSupplements(user.isSupplements());
 
         System.out.println(this.user.toString());
 
