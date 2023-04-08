@@ -80,4 +80,5 @@ public class User {
     public boolean isAllParametersOk() {
         return allParametersOk;
     }
+
 }
