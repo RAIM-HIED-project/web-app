@@ -54,7 +54,7 @@ public class User {
 
     String illnessesInput;
 
-    List<String> illnesses = (illnessesInput != null) ? Arrays.asList(illnessesInput.split(", ")) : new ArrayList<String>();
+    List<String> illnesses;
 
     boolean allParametersOk;
 
@@ -79,5 +79,13 @@ public class User {
 
     public boolean isAllParametersOk() {
         return allParametersOk;
+    }
+
+    public List<String> getIllnesses(String illnessesInput) {
+        if (illnessesInput != null && !illnessesInput.isEmpty()) {
+            return Arrays.asList(illnessesInput.split(", "));
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

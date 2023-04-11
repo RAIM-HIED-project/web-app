@@ -46,7 +46,7 @@
         </div>
 
 
-        <p class="fw-bold mt-5">Czy chorujesz na choroby przewlekłe?</p>
+        <p class="fw-bold mt-5">Czy chorujesz na jakiekolwiek choroby przewlekłe?</p>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" id="illness-false" value="false" th:field="*{chronic_illness}"/>
           <label class="form-check-label" for="illness-false">Nie choruję</label>
@@ -58,8 +58,8 @@
 
         <div id="which-illnesses-question" class="form-check mb-5">
           <div class="form-outline mb-2 mt-2">
-            <label for="illnesses" class="form-label fw-bold">Jakie?</label>
-            <input th:field="*{illnessesInput}" type="text" class="form-control" pattern="^[a-zA-Z]+(?:,\s*[a-zA-Z]+)*$" id="illnesses"  name="illnesses" />
+            <label for="illnessesInput" class="form-label fw-bold">Jakie? (proszę wymienic po przecinku)</label>
+            <input th:field="*{illnessesInput}" type="text" class="form-control" pattern="^[a-zA-Z]+(?:,\s*[a-zA-Z]+)*$" id="illnessesInput"  name="illnessesInput" />
           </div>
         </div>
 
