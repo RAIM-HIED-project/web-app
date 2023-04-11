@@ -109,7 +109,7 @@ public class PageController {
 
         System.out.println(this.user.toString());
 
-        // userService.saveUser(this.user);
+        userService.saveUser(this.user);
 
         return "end_page";
     }
