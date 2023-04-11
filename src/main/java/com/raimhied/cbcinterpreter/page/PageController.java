@@ -1,4 +1,4 @@
-package com.raimhied.cbcinterpreter.question;
+package com.raimhied.cbcinterpreter.page;
 
 import com.raimhied.cbcinterpreter.user.User;
 import com.raimhied.cbcinterpreter.user.UserService;
@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
