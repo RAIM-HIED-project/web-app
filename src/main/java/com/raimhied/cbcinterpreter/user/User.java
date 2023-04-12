@@ -54,8 +54,6 @@ public class User {
 
     String illnessesInput;
 
-    List<String> illnesses;
-
     boolean allParametersOk;
 
     float RCC;
