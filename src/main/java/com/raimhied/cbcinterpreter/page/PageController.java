@@ -69,6 +69,7 @@ public class PageController {
         this.user.setRegularity(user.isRegularity());
         this.user.setVegan(user.isVegan());
         this.user.setIllnessesInput(user.getIllnessesInput());
+        this.user.setIllnesses(user.getIllnesses(user.getIllnessesInput()));
 
         System.out.println(this.user.toString());
 

@@ -127,7 +127,7 @@
 
     function validateAge() {
         const age = parseInt(ageInput.value);
-        if (isNaN(age) || age <= 0 || age > 150) {
+        if (isNaN(age) || age <= 0 || age > 125) {
           ageInput.classList.add('is-invalid');
           ageErr = true;
           nextBtn.disabled = true;
@@ -142,7 +142,7 @@
 
     function validateHeight() {
         const height = parseInt(heightInput.value);
-        if (isNaN(height) || height <= 20 || height > 250) {
+        if (isNaN(height) || height <= 20 || height > 280) {
           heightInput.classList.add('is-invalid');
           heightErr = true;
           nextBtn.disabled = true;
@@ -157,7 +157,7 @@
 
     function validateWeight() {
         const weight = parseInt(weightInput.value);
-        if (isNaN(weight) || weight <= 0 || weight > 500) {
+        if (isNaN(weight) || weight <= 0 || weight > 222) {
           weightInput.classList.add('is-invalid');
           weightErr = true;
           nextBtn.disabled = true;
