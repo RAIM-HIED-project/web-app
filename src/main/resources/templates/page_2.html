@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <h4 class="fw-bold text-center mt-3 mb-5">Strona druga: pytania o stan zdrowia i styl życia</h4>
+      <h4 class="fw-bold text-center mt-3 mb-5">Pytania o stan zdrowia i styl życia</h4>
       <form class="bg-white px-4" th:action="@{/page/2}" method="post" th:object="${user}">
 
         <p class="fw-bold">Jak często badasz krew?</p>
@@ -73,7 +73,7 @@
         <div id="which-illnesses-question" class="form-check mb-5">
           <div class="form-outline mb-2 mt-2">
             <label for="illnessesInput" class="form-label fw-bold">Jakie? (proszę wymienic po przecinku)</label>
-            <input th:field="*{illnessesInput}" type="text" class="form-control" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(?:,\s*[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)*$" id="illnessesInput"  name="illnessesInput" />
+            <input th:field="*{illnessesInput}" type="text" class="form-control" pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+(?:,\s*[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+)*$" id="illnessesInput"  name="illnessesInput" />
           </div>
         </div>
 
